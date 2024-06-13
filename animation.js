@@ -56,7 +56,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
             createScrollTrigger(element, tl);
         });
 
-    }, 1800); // Adjust the delay as needed for your preloader animation
+    }, 1700); // Adjust the delay as needed for your preloader animation
 });
 
         // Fade Left Animation
