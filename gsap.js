@@ -28,7 +28,7 @@ setTimeout(() => {
         // Play tl when scrolled into view or if already in view, only once
         ScrollTrigger.create({
             trigger: triggerElement,
-            start: "top 80%", // Start the animation when the top of the element is 80% from the top of the viewport
+            start: "top 90%", // Start the animation when the top of the element is 80% from the top of the viewport
             onEnter: () => timeline.play(),
             onEnterBack: () => timeline.play(),
             once: true // Ensures the animation runs only once
