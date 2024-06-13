@@ -66,15 +66,12 @@ setTimeout(() => {
     return;
     }
 
-    // Register ScrollTrigger plugin with GSAP
-    gsap.registerPlugin(ScrollTrigger);
-
     // Link timelines to scroll position
     function createScrollTrigger(triggerElement, timeline) {
     // Play tl when scrolled into view (60% from top of screen), only once
     ScrollTrigger.create({
         trigger: triggerElement,
-        start: "top 60%",
+        start: "top 80%",
         onEnter: () => timeline.play(),
         once: true // Ensures the animation runs only once
     });
@@ -82,7 +79,7 @@ setTimeout(() => {
 
     document.querySelectorAll("[a-fade-left]").forEach((element) => {
     let tl = gsap.timeline({ paused: true });
-    tl.from(element.querySelectorAll(".word"), {
+    tl.from(element.querySelectorAll("[a-fade-left]"), {
         opacity: 0,
         x: -30, // 30px offset from the left
         duration: 0.5,
