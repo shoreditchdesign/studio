@@ -29,7 +29,7 @@ setTimeout(() => {
 
         ScrollTrigger.create({
             trigger: triggerElement,
-            start: "top 80%", // Start the animation when the top of the element is 80% from the top of the viewport
+            start: "top bottom", // Start the animation when the top of the element is at the bottom
             onEnter: () => {
                 if (!hasPlayed) {
                     timeline.play();
