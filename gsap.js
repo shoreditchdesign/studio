@@ -47,7 +47,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         opacity: 0,
         yPercent: 100,
         duration: 0.5,
-        ease: "back.out(2)",
+        ease: "expo.out",
         stagger: 0.05, // Stagger each element by 200 ms
       });
       createScrollTrigger(element, tl);
