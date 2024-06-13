@@ -56,5 +56,5 @@ setTimeout(() => {
         createScrollTrigger(element, tl);
     });
 
-}, 1100); // Adjust the delay as needed for your preloader animation
+}, 800); // Adjust the delay as needed for your preloader animation
 });
