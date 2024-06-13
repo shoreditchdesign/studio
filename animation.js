@@ -13,6 +13,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         // Stagger Up Animation
         document.querySelectorAll("h1, h2").forEach((element) => {
             element.setAttribute("a-stagger-up", "");
+            gsap.set(element, { opacity: 0 }); // Set initial opacity to 0
         });
 
         // Split text into spans
@@ -55,8 +56,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
             createScrollTrigger(element, tl);
         });
 
-        // Avoid flash of unstyled content
-        gsap.set("[a-stagger-up]", { opacity: 1 });
+    }, 1800); // Adjust the delay as needed for your preloader animation
+});
 
         // Fade Left Animation
         document.querySelectorAll(".text-lg").forEach((element) => {
