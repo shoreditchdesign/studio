@@ -25,12 +25,23 @@ setTimeout(() => {
 
     // Link timelines to scroll position
     function createScrollTrigger(triggerElement, timeline) {
-        // Play tl when scrolled into view or if already in view, only once
+        let hasPlayed = false;
+
         ScrollTrigger.create({
             trigger: triggerElement,
-            start: "top 90%", // Start the animation when the top of the element is 80% from the top of the viewport
-            onEnter: () => timeline.play(),
-            onEnterBack: () => timeline.play(),
+            start: "top 80%", // Start the animation when the top of the element is 80% from the top of the viewport
+            onEnter: () => {
+                if (!hasPlayed) {
+                    timeline.play();
+                    hasPlayed = true;
+                }
+            },
+            onEnterBack: () => {
+                if (!hasPlayed) {
+                    timeline.play();
+                    hasPlayed = true;
+                }
+            },
             once: true // Ensures the animation runs only once
         });
     }
@@ -54,42 +65,41 @@ setTimeout(() => {
 
 
 
-
 //Fade In Left Snippet
 
 window.addEventListener("DOMContentLoaded", (event) => {
 // Delay execution for preloader animation
 setTimeout(() => {
-    // Ensure GSAP and plugins are loaded
-    if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined" || typeof SplitType === "undefined") {
-    console.error("GSAP, ScrollTrigger, or SplitType is not loaded.");
-    return;
-    }
+// Ensure GSAP and plugins are loaded
+if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined" || typeof SplitType === "undefined") {
+console.error("GSAP, ScrollTrigger, or SplitType is not loaded.");
+return;
+}
 
-    // Link timelines to scroll position
-    function createScrollTrigger(triggerElement, timeline) {
-    // Play tl when scrolled into view (60% from top of screen), only once
-    ScrollTrigger.create({
-        trigger: triggerElement,
-        start: "top 80%",
-        onEnter: () => timeline.play(),
-        once: true // Ensures the animation runs only once
-    });
-    }
+// Link timelines to scroll position
+function createScrollTrigger(triggerElement, timeline) {
+// Play tl when scrolled into view (60% from top of screen), only once
+ScrollTrigger.create({
+    trigger: triggerElement,
+    start: "top 80%",
+    onEnter: () => timeline.play(),
+    once: true // Ensures the animation runs only once
+});
+}
 
-    document.querySelectorAll("[a-fade-left]").forEach((element) => {
-    let tl = gsap.timeline({ paused: true });
-    tl.from(element.querySelectorAll("[a-fade-left]"), {
-        opacity: 0,
-        x: -30, // 30px offset from the left
-        duration: 0.5,
-        ease: "power1.in", // ease-in curve
-        stagger: 0.05, // Stagger each element by 50 ms
-    });
-    createScrollTrigger(element, tl);
-    });
+document.querySelectorAll("[a-fade-left]").forEach((element) => {
+let tl = gsap.timeline({ paused: true });
+tl.from(element.querySelectorAll("[a-fade-left]"), {
+    opacity: 0,
+    x: -30, // 30px offset from the left
+    duration: 0.5,
+    ease: "power1.in", // ease-in curve
+    stagger: 0.05, // Stagger each element by 50 ms
+});
+createScrollTrigger(element, tl);
+});
 
-    // Avoid flash of unstyled content
-    gsap.set("[a-fade-left]", { opacity: 1 });
+// Avoid flash of unstyled content
+gsap.set("[a-fade-left]", { opacity: 1 });
 }, 1800); // 1800ms delay for preloader animation
 });
