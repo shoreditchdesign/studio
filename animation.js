@@ -11,7 +11,7 @@ setTimeout(() => {
     gsap.registerPlugin(ScrollTrigger);
 
     // Stagger Up Animation
-    document.querySelectorAll("h1, h2").forEach((element) => {
+    document.querySelectorAll("h1").forEach((element) => {
         element.setAttribute("a-stagger-up", "");
         gsap.set(element, { opacity: 0 }); // Set initial opacity to 0
     });
