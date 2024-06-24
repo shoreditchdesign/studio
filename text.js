@@ -58,5 +58,5 @@ window.addEventListener("DOMContentLoaded", (event) => {
         gsap.set("[a-stagger-up]", { opacity: 0 });
 
       
-    }, 1800); // 1800ms delay for preloader animation
+    }, 1000); // 1000ms delay for preloader animation
 });
