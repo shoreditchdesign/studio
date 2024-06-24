@@ -55,7 +55,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         });
 
         // Avoid flash of unstyled content
-        gsap.set("[a-stagger-up]", { opacity: 1 });
+        gsap.set("[a-stagger-up]", { opacity: 0 });
 
       
     }, 1800); // 1800ms delay for preloader animation
