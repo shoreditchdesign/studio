@@ -26,7 +26,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
             ScrollTrigger.create({
                 trigger: triggerElement,
-                start: "top bottom", // Start the animation when the top of the element is at the bottom
+                start: "top 80%", // Start the animation when the top of the element is at the bottom
                 onEnter: () => {
                     if (!hasPlayed) {
                         timeline.play();
