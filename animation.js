@@ -30,3 +30,7 @@ function setupSplits() {
 
 ScrollTrigger.addEventListener("refresh", setupSplits);
 setupSplits();
+
+window.addEventListener('load', () => {
+    setTimeout(setupSplits, 1700);
+  });
