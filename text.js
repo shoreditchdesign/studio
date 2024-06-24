@@ -48,7 +48,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
             tl.from(element.querySelectorAll(".word"), {
                 opacity: 0,
                 yPercent: 100,
-                duration: 0.5,
                 ease: "expo.out",
                 stagger: 0.05, // Stagger each element by 50 ms
             });
