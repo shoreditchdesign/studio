@@ -46,10 +46,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
         document.querySelectorAll("[a-stagger-up]").forEach((element) => {
             let tl = gsap.timeline({ paused: true });
             tl.from(element.querySelectorAll(".word"), {
-                opacity: 1,
                 yPercent: 100,
                 ease: "expo.out",
-                stagger: 0.2, // Stagger each element by 400 ms
+                stagger: 0.2, // Stagger each element by 200 ms
             });
             createScrollTrigger(element, tl);
         });
