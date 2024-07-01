@@ -49,7 +49,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 opacity: 1,
                 yPercent: 100,
                 ease: "expo.out",
-                stagger: 0.4, // Stagger each element by 400 ms
+                stagger: 0.2, // Stagger each element by 400 ms
             });
             createScrollTrigger(element, tl);
         });
