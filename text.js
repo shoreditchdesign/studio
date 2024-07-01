@@ -42,21 +42,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 once: true // Ensures the animation runs only once
             });
         }
+        
         document.querySelectorAll("[a-stagger-up]").forEach((element) => {
             let tl = gsap.timeline({ paused: true });
-            tl.fromTo(
-                element.querySelectorAll(".word"),
-                {
-                    opacity: 0,
-                    yPercent: 100,
-                },
-                {
-                    opacity: 1,
-                    yPercent: 0,
-                    ease: "expo.out",
-                    stagger: 0.2, // Stagger each element by 200 ms
-                }
-            );
+            tl.from(element.querySelectorAll(".word"), {
+                opacity: 0,
+                yPercent: 100,
+                duration: 0.5,
+                ease: "expo.out",
+                stagger: 0.05, // Stagger each element by 50 ms
+            });
             createScrollTrigger(element, tl);
         });
 
