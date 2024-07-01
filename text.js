@@ -52,10 +52,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
             });
             createScrollTrigger(element, tl);
         });
-
-        // Avoid flash of unstyled content
-        gsap.set("[a-stagger-up]", { opacity: 0 });
-
       
     }, 0); // 1000ms delay for preloader animation
 });
