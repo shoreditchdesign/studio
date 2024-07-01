@@ -13,7 +13,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
         // Stagger Up Animation
         document.querySelectorAll("h1, h2").forEach((element) => {
             element.setAttribute("a-stagger-up", "");
-            element.style.opacity = 1; // Set the style attribute opacity: 1
         });
 
         // Split text into spans
@@ -66,4 +65,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
       
     }, 1000); // 1000ms delay for preloader animation
+    document.querySelectorAll("h1, h2").forEach((element) => {
+        element.setAttribute("a-stagger-up", "");
+        element.style.opacity = 1; // Set the style attribute opacity: 1
+    });
 });
