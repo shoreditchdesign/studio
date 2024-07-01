@@ -47,9 +47,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
             let tl = gsap.timeline({ paused: true });
             tl.from(element.querySelectorAll(".word"), {
                 opacity: 0,
+                duration: 0.4,
                 yPercent: 100,
-                ease: "expo.out",
-                stagger: 0.15, // Stagger each element by 150 ms
+                ease: 'power1.inOut',
+                stagger: { each: 0.16 }, // Stagger each element by 160 ms
             });
             createScrollTrigger(element, tl);
         });
