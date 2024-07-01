@@ -61,12 +61,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
         });
 
         // Avoid flash of unstyled content
-        // gsap.set("[a-stagger-up]", { opacity: 0 });
+        gsap.set("[a-stagger-up]", { opacity: 1 });
 
       
     }, 1000); // 1000ms delay for preloader animation
-    document.querySelectorAll("h1, h2").forEach((element) => {
-        element.setAttribute("a-stagger-up", "");
-        element.style.opacity = 1; // Set the style attribute opacity: 1
-    });
 });
