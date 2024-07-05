@@ -1,6 +1,6 @@
 const navbar = document.querySelector('.c-navbar');
 var prevScrollpos = window.pageYOffset;
-const navbarHeight = navbar.offsetHeight; // Get navbar height
+const navbarHeight = navbar.offsetHeight; // Get navbar height test
 
 window.onscroll = function() {
   var currentScrollPos = window.pageYOffset;
