@@ -4,8 +4,10 @@ html.w-editor h1 {opacity: 1;}
 html.w-editor h2 {opacity: 1;}
 
 .word {
+  vertical-align: top; 
 	overflow: hidden;
   padding-bottom: 0.1em;
   margin-bottom: -0.1em;
   transform-origin: bottom;
+  font-kerning: none;
 }
