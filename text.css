@@ -6,6 +6,7 @@ html.w-editor h2 {opacity: 1;}
 .word {
   vertical-align: top; 
 	overflow: hidden;
+  font-weight: 500;
   padding-bottom: 0.1em;
   margin-bottom: -0.1em;
   transform-origin: bottom;
