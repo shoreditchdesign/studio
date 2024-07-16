@@ -47,9 +47,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
             tl.from(element.querySelectorAll(".word"), {
                 opacity: 0,
                 duration: 0.4,
-                yPercent: 100,
-                ease: 'power1.inOut',
-                stagger: { each: 0.16 }, // Stagger each element by 160 ms
+                yPercent: 110,
+                ease: 'power1.Out',
+                stagger: { each: 0.1 }, // Stagger each element by 100 ms
             });
             createScrollTrigger(element, tl);
         });
