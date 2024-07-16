@@ -17,7 +17,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
         // Split text into spans
         new SplitType("[a-stagger-up]", {
-            types: "words, chars",
             tagName: "span",
         });
 
