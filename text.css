@@ -13,11 +13,11 @@ html.w-editor h2 {opacity: 1;}
   font-kerning: none;
 }
 
-.lines {
+.line {
 	overflow: hidden;
   font-kerning: none;
 }
 
-.chars {
+.char {
   font-kerning: none;
 }
