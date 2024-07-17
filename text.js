@@ -11,7 +11,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         gsap.registerPlugin(ScrollTrigger);
 
         // Stagger Up Animation
-        document.querySelectorAll("h1, h2").forEach((element) => {
+        document.querySelectorAll("h1, h2, h3").forEach((element) => {
             element.setAttribute("a-stagger-up", "");
         });
 
