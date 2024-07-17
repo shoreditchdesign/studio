@@ -12,3 +12,12 @@ html.w-editor h2 {opacity: 1;}
   transform-origin: bottom;
   font-kerning: none;
 }
+
+.line {
+	overflow: hidden;
+  font-kerning: none;
+}
+
+.char {
+  font-kerning: none;
+}
