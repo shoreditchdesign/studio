@@ -11,7 +11,8 @@ $(".counterup").each(function (index) {
   let duration = $(this).attr("count-duration");
   // animate number
   let myCounter = new CountUp(thisId, startNumber, endNumber, decimals, duration);
-  // Scroll out of view trigger
+  
+  /* Scroll out of view trigger
   ScrollTrigger.create({
     trigger: $(this),
     start: "top bottom",
@@ -19,7 +20,8 @@ $(".counterup").each(function (index) {
     onLeaveBack: () => {
       myCounter.reset();
     }
-  });
+  });*/
+
   // Scroll into view trigger
   ScrollTrigger.create({
     trigger: $(this),
