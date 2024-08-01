@@ -11,3 +11,12 @@ window.onscroll = function() {
   }
   prevScrollpos = currentScrollPos;
 }
+
+window.addEventListener('load', function() {
+  setTimeout(function() {
+      var navbarLinks = document.querySelectorAll('.c-navbar_link');
+      navbarLinks.forEach(function(link) {
+          link.style.opacity = '1';
+      });
+  }, 5000); // 5000 milliseconds = 5 seconds
+});
