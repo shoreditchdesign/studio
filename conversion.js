@@ -20,7 +20,7 @@ ScrollTrigger.create({
     if (self.scroll() > window.innerHeight * 1.5) {
       gsap.to(popup, { y: 0 });
     } else {
-      gsap.to(popup, { y: popupHeight });
+      gsap.to(popup, { y: 2* popupHeight });
     }
   }
 });
