@@ -10,7 +10,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function stopEmbedVideo() {
     const frame = document.querySelector('iframe#embedvideo');
-    const videoSrc = frame.getAttribute('src');
+    let videoSrc = frame.getAttribute('src');
+    
+    // Turn autoplay off and reset to beginning
+    if (videoSrc.includes('autoplay=1')) {
+        videoSrc = videoSrc.replace('autoplay=1', 'autoplay=0');
+    }
+    
+    // Add #t=0s to reset to beginning if not present
+    if (!videoSrc.includes('#t=')) {
+        videoSrc = `${videoSrc}#t=0s`;
+    } else {
+        videoSrc = videoSrc.replace(/#t=\d+s/, '#t=0s');
+    }
+    
     frame.setAttribute('src', '');
     frame.setAttribute('src', videoSrc);
 }
@@ -22,11 +35,9 @@ function playEmbedVideo() {
     // Add Vimeo-specific autoplay parameter
     if (!videoSrc.includes('autoplay=')) {
         const separator = videoSrc.includes('?') ? '&' : '?';
-        // For Vimeo: autoplay=1 without muted parameter
         const newSrc = `${videoSrc}${separator}autoplay=1&background=0`;
         frame.setAttribute('src', newSrc);
     } else {
-        // If autoplay parameter exists but is set to 0, set it to 1
         const updatedSrc = videoSrc.replace('autoplay=0', 'autoplay=1');
         frame.setAttribute('src', updatedSrc);
     }
