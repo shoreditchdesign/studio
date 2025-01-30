@@ -21,9 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const STAGGER_DELAY = 0.2;
     const HOLD_DURATION = 1;
     const EASE = "power1.inOut";
-    let firstRun = true;
+    let firstRun = false;
 
-    gsap.set('.c-logo_icon', { opacity: 0, scale: 0.95 });
+    // Set initial states
+    gsap.set('[data-logo-icon]', { opacity: 0, scale: 0.95 });
+    const initialIcons = document.querySelectorAll('[data-logo-icon="0"]');
+    gsap.set(initialIcons, { opacity: 1 });
 
     const createMainTimeline = () => {
       const timeline = gsap.timeline();
