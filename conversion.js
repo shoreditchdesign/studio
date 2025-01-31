@@ -5,6 +5,9 @@ gsap.registerPlugin(ScrollTrigger);
 const popup = document.querySelector(".c-cta-popup_wrap");
 const popupHeight = popup.offsetHeight;
 
+// Get the conversion distance multiplier from data attribute
+const conversionDistance = parseFloat(popup.getAttribute('data-conversion-distance')) || 1.5; // fallback to 1.5 if not set
+
 // GSAP animation for the popup
 gsap.fromTo(popup,
   { y: popupHeight }, // Start position (hidden below its own height)
@@ -17,10 +20,10 @@ ScrollTrigger.create({
   start: "top top", // Trigger when the top of the body hits the top of the viewport
   end: "bottom top", // End when the bottom of the body hits the top of the viewport
   onUpdate: self => {
-    if (self.scroll() > window.innerHeight * 1.5) {
+    if (self.scroll() > window.innerHeight * conversionDistance) {
       gsap.to(popup, { y: 0 });
     } else {
-      gsap.to(popup, { y: 2* popupHeight });
+      gsap.to(popup, { y: 2 * popupHeight });
     }
   }
 });
