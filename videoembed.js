@@ -1,3 +1,56 @@
+class VideoErrorHandler {
+    constructor(container) {
+      this.container = container;
+      this.iframe = container.querySelector('iframe');
+      if (this.iframe) {
+        const videoId = this.getVideoId(this.iframe.src);
+        if (videoId) {
+          this.setupVimeoPlayer(videoId);
+        }
+      }
+    }
+
+    getVideoId(url) {
+      const match = url.match(/video\/(\d+)/);
+      return match ? match[1] : null;
+    }
+
+    async setupVimeoPlayer(videoId) {
+      try {
+        const player = new Vimeo.Player(this.iframe);
+
+        player.on('error', (error) => {
+          this.handleError();
+        });
+
+        try {
+          await player.getVideoTitle();
+        } catch (error) {
+          this.handleError();
+        }
+      } catch (error) {
+        this.handleError();
+      }
+    }
+
+    handleError() {
+      this.container.innerHTML = `
+      <div class="vimeo-error" style="background-color: #F9FAFF; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+  </div>
+    `;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const vimeoScript = document.createElement('script');
+    vimeoScript.src = 'https://player.vimeo.com/api/player.js';
+    vimeoScript.onload = () => {
+      const videoCovers = document.querySelectorAll('.video-cover');
+      videoCovers.forEach(cover => new VideoErrorHandler(cover));
+    };
+    document.head.appendChild(vimeoScript);
+  });
+
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('lightbox-close').addEventListener('click', function() {
         stopEmbedVideo();
