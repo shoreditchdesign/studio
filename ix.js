@@ -1,3 +1,5 @@
+console.log("ix deployed");
+
 //Carousel
 document.addEventListener("DOMContentLoaded", () => {
   let container = document.querySelector(".d-cs_carousel-track");
