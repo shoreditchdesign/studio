@@ -186,3 +186,39 @@ document.addEventListener("DOMContentLoaded", function () {
       playEmbedVideo();
     });
 });
+
+//Cookie Banner
+document.addEventListener("DOMContentLoaded", function () {
+  // Initialize banner with delay
+  const wrap = document.querySelector('[data-cc-item="wrap"]');
+  if (wrap) {
+    const delay = parseInt(wrap.getAttribute("data-cc-delay")) || 0;
+
+    setTimeout(() => {
+      wrap.setAttribute("data-cc-state", "show");
+    }, delay * 1000);
+  }
+
+  // Wrap triggers
+  document.querySelectorAll("[data-cc-trigger]").forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const wrap = document.querySelector('[data-cc-item="wrap"]');
+      const triggerType = trigger.getAttribute("data-cc-trigger");
+      if (wrap) {
+        const newState = triggerType === "open" ? "show" : "hide";
+        wrap.setAttribute("data-cc-state", newState);
+      }
+    });
+  });
+  // Pref triggers
+  document.querySelectorAll("[data-pref-trigger]").forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const pref = document.querySelector('[data-cc-item="pref"]');
+      const triggerType = trigger.getAttribute("data-pref-trigger");
+      if (pref) {
+        const newState = triggerType === "open" ? "show" : "hide";
+        pref.setAttribute("data-pref-state", newState);
+      }
+    });
+  });
+});
