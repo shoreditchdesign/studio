@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // end: "bottom top", // No specific end needed, we react continuously
     onUpdate: (self) => {
       // Use window.scrollY for current scroll position
+
       if (window.scrollY > window.innerHeight * conversionDistance) {
         // Show the popup by animating to its visible position
         gsap.to(popup, { y: 0, duration: 0.5 });
@@ -41,6 +42,34 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     },
   });
+
+  // Get the element that should hide the banner when in view (e.g., footer)
+  const hideElement = document.querySelector("[data-conversion-hide]");
+
+  // If hide element exists, create a separate ScrollTrigger to control opacity
+  if (hideElement) {
+    ScrollTrigger.create({
+      trigger: hideElement,
+      start: "top bottom", // When top of element enters bottom of viewport
+      end: "bottom top", // When bottom of element leaves top of viewport
+      onEnter: () => {
+        // Fade out banner when footer comes into view
+        gsap.to(popup, { opacity: 0, duration: 0.3 });
+      },
+      onLeave: () => {
+        // Fade banner back in when footer leaves viewport (scrolling down past it)
+        gsap.to(popup, { opacity: 1, duration: 0.3 });
+      },
+      onEnterBack: () => {
+        // Fade out banner when scrolling back up to footer
+        gsap.to(popup, { opacity: 0, duration: 0.3 });
+      },
+      onLeaveBack: () => {
+        // Fade banner back in when leaving footer (scrolling up away from it)
+        gsap.to(popup, { opacity: 1, duration: 0.3 });
+      },
+    });
+  }
 
   // Optional: Handle window resize to update ScrollTrigger if necessary
   // ScrollTrigger.addEventListener("refreshInit", () => {
