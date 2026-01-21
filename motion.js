@@ -54,19 +54,19 @@ document.addEventListener("DOMContentLoaded", function () {
       end: "bottom top", // When bottom of element leaves top of viewport
       onEnter: () => {
         // Fade out banner when footer comes into view
-        gsap.to(popup, { opacity: 0, duration: 0.3 });
+        gsap.to(popup, { opacity: 0, duration: 0.1 });
       },
       onLeave: () => {
         // Fade banner back in when footer leaves viewport (scrolling down past it)
-        gsap.to(popup, { opacity: 1, duration: 0.3 });
+        gsap.to(popup, { opacity: 1, duration: 0.1 });
       },
       onEnterBack: () => {
         // Fade out banner when scrolling back up to footer
-        gsap.to(popup, { opacity: 0, duration: 0.3 });
+        gsap.to(popup, { opacity: 0, duration: 0.1 });
       },
       onLeaveBack: () => {
         // Fade banner back in when leaving footer (scrolling up away from it)
-        gsap.to(popup, { opacity: 1, duration: 0.3 });
+        gsap.to(popup, { opacity: 1, duration: 0.1 });
       },
     });
   }
