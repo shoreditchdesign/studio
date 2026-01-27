@@ -276,3 +276,34 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.set("[a-stagger-up]", { opacity: 1 });
   }, 1400); // 1000ms delay for preloader animation
 });
+
+// Banner Marquee (desktop only)
+document.addEventListener("DOMContentLoaded", () => {
+  const wrap = document.querySelector("[data-marquee-wrap]");
+  const item = document.querySelector("[data-marquee-item]");
+
+  if (!wrap || !item) return;
+
+  // Skip animation on mobile
+  if (window.innerWidth <= 991) return;
+
+  // Clone items to fill viewport
+  const itemWidth = item.offsetWidth;
+  const copies = Math.ceil((window.innerWidth * 5) / itemWidth) + 2;
+  const original = item.outerHTML;
+
+  wrap.innerHTML = "";
+  for (let i = 0; i < copies; i++) {
+    wrap.insertAdjacentHTML("beforeend", original);
+  }
+
+  // Animate
+  const totalWidth = itemWidth * copies;
+  gsap.to(wrap, {
+    x: -totalWidth + itemWidth,
+    duration: totalWidth / 25,
+    ease: "none",
+    repeat: -1,
+    onRepeat: () => gsap.set(wrap, { x: 0 }),
+  });
+});
