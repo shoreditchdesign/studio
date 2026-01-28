@@ -279,31 +279,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Banner Marquee (desktop only)
 document.addEventListener("DOMContentLoaded", () => {
-  const wrap = document.querySelector("[data-marquee-wrap]");
-  const item = document.querySelector("[data-marquee-item]");
+  const wraps = document.querySelectorAll("[data-marquee-wrap]");
 
-  if (!wrap || !item) return;
+  if (!wraps.length) return;
 
   // Skip animation on mobile
   if (window.innerWidth <= 991) return;
 
-  // Clone items to fill viewport
-  const itemWidth = item.offsetWidth;
-  const copies = Math.ceil((window.innerWidth * 5) / itemWidth) + 2;
-  const original = item.outerHTML;
+  wraps.forEach((wrap) => {
+    const item = wrap.querySelector("[data-marquee-item]");
+    if (!item) return;
 
-  wrap.innerHTML = "";
-  for (let i = 0; i < copies; i++) {
-    wrap.insertAdjacentHTML("beforeend", original);
-  }
+    // Clone items to fill viewport
+    const itemWidth = item.offsetWidth;
+    const copies = Math.ceil((window.innerWidth * 5) / itemWidth) + 2;
+    const original = item.outerHTML;
 
-  // Animate
-  const totalWidth = itemWidth * copies;
-  gsap.to(wrap, {
-    x: -totalWidth + itemWidth,
-    duration: totalWidth / 25,
-    ease: "none",
-    repeat: -1,
-    onRepeat: () => gsap.set(wrap, { x: 0 }),
+    wrap.innerHTML = "";
+    for (let i = 0; i < copies; i++) {
+      wrap.insertAdjacentHTML("beforeend", original);
+    }
+
+    // Animate
+    const totalWidth = itemWidth * copies;
+    gsap.to(wrap, {
+      x: -totalWidth + itemWidth,
+      duration: totalWidth / 25,
+      ease: "none",
+      repeat: -1,
+      onRepeat: () => gsap.set(wrap, { x: 0 }),
+    });
   });
 });
